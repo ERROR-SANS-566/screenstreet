@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+/* Design System - Color Tokens */
+:root {
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+  /* Surface colors */
+  --surface: #fafafa;
+  --surface-elevated: #ffffff;
+
+  /* Text colors */
+  --text-primary: #0a0a0a;
+  --text-secondary: #525252;
+  --text-muted: #a3a3a3;
+
+  /* Border colors */
+  --border: #e5e5e5;
+  --border-light: #f5f5f5;
+
+  /* Accent colors */
+  --accent: #0066cc;
+  --accent-hover: #0052a3;
+  --accent-light: #e6f2ff;
+
+  /* Semantic colors */
+  --success: #16a34a;
+  --success-light: #dcfce7;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --error: #dc2626;
+  --error-light: #fee2e2;
+
+  /* Kazakhstan brand colors */
+  --kazakh-blue: #00AFCA;
+  --kazakh-gold: #FDB71A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #fafafa;
+
+    --surface: #171717;
+    --surface-elevated: #262626;
+
+    --text-primary: #fafafa;
+    --text-secondary: #d4d4d4;
+    --text-muted: #737373;
+
+    --border: #404040;
+    --border-light: #262626;
+
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    --accent-light: #1e3a5f;
+
+    --success: #22c55e;
+    --success-light: #14532d;
+    --warning: #fbbf24;
+    --warning-light: #422006;
+    --error: #ef4444;
+    --error-light: #450a0a;
+
+    --kazakh-blue: #00AFCA;
+    --kazakh-gold: #FDB71A;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-success: var(--success);
+  --color-success-light: var(--success-light);
+  --color-warning: var(--warning);
+  --color-warning-light: var(--warning-light);
+  --color-error: var(--error);
+  --color-error-light: var(--error-light);
+  --color-kazakh-blue: var(--kazakh-blue);
+  --color-kazakh-gold: var(--kazakh-gold);
+}
+
+/* Typography */
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-text-primary;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+
+  h6 {
+    @apply text-base md:text-lg;
+  }
+
+  p {
+    @apply text-text-secondary;
+  }
+
+  a {
+    @apply text-accent hover:text-accent-hover transition-colors;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
